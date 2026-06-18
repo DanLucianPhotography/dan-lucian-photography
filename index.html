@@ -51,7 +51,7 @@ color:gold;
 opacity:1;
 }
 
-/* HERO SLIDESHOW */
+/* HERO */
 .hero{
 height:100vh;
 display:flex;
@@ -72,14 +72,9 @@ transition:1.2s ease-in-out;
 filter:brightness(0.6);
 }
 
-.slide.active{
-opacity:1;
-}
+.slide.active{ opacity:1; }
 
-.hero-content{
-position:relative;
-z-index:2;
-}
+.hero-content{ position:relative; z-index:2; }
 
 .hero h1{
 font-family:'Playfair Display', serif;
@@ -89,8 +84,9 @@ letter-spacing:2px;
 }
 
 .hero p{
-opacity:0.7;
+opacity:0.8;
 margin-top:10px;
+font-size:18px;
 }
 
 .hero a{
@@ -121,7 +117,7 @@ text-align:center;
 margin-bottom:40px;
 }
 
-/* ABOUT */
+/* DESPRE MINE */
 .about{
 max-width:750px;
 margin:auto;
@@ -130,7 +126,7 @@ opacity:0.85;
 line-height:1.7;
 }
 
-/* SERVICES */
+/* SERVICII */
 .services{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
@@ -149,7 +145,7 @@ border-color:gold;
 transform:translateY(-6px);
 }
 
-/* GALLERY */
+/* GALERIE */
 .gallery{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
@@ -215,9 +211,9 @@ nav{padding:15px 5%;}
 <nav>
 <div class="logo">Dan Lucian</div>
 <div>
-<a href="#about">About</a>
-<a href="#services">Services</a>
-<a href="#gallery">Gallery</a>
+<a href="#despre">Despre</a>
+<a href="#servicii">Servicii</a>
+<a href="#galerie">Galerie</a>
 <a href="#contact">Contact</a>
 </div>
 </nav>
@@ -230,33 +226,33 @@ nav{padding:15px 5%;}
 
 <div class="hero-content">
 <h1>Dan Lucian Photography</h1>
-<p>Luxury Wedding & Event Storytelling</p>
-<a href="#gallery">Explore Portfolio</a>
+<p>Fotografie de nuntă și evenimente cu stil, emoție și eleganță</p>
+<a href="#galerie">Vezi portofoliul</a>
 </div>
 
 </header>
 
-<section id="about" class="about">
-<h2>About</h2>
+<section id="despre" class="about">
+<h2>Despre mine</h2>
 <p>
-I focus on capturing authentic emotion and timeless visual storytelling.
-Every event is documented with a cinematic and elegant approach,
-designed to preserve memories in their most natural form.
+Surprind emoția autentică și momentele care nu se repetă.
+Fiecare eveniment este tratat ca o poveste vizuală,
+capturată într-un stil cinematic și elegant, cu atenție la detalii și lumină.
 </p>
 </section>
 
-<section id="services">
-<h2>Services</h2>
+<section id="servicii">
+<h2>Servicii</h2>
 <div class="services">
-<div class="service">Wedding Photography</div>
-<div class="service">Baptisms</div>
-<div class="service">Corporate Events</div>
-<div class="service">Portrait Sessions</div>
+<div class="service">Fotografie de nuntă</div>
+<div class="service">Botezuri</div>
+<div class="service">Evenimente corporate</div>
+<div class="service">Ședințe foto portret</div>
 </div>
 </section>
 
-<section id="gallery">
-<h2>Gallery</h2>
+<section id="galerie">
+<h2>Galerie</h2>
 <div class="gallery">
 <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" onclick="openLightbox(this.src)">
 <img src="https://images.unsplash.com/photo-1523438097201-512ae7d59c1a" onclick="openLightbox(this.src)">
@@ -272,7 +268,7 @@ designed to preserve memories in their most natural form.
 </section>
 
 <footer>
-© 2026 Dan Lucian Photography
+© 2026 Dan Lucian Photography. Toate drepturile rezervate.
 </footer>
 
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
@@ -281,7 +277,6 @@ designed to preserve memories in their most natural form.
 
 <script>
 
-/* LIGHTBOX */
 function openLightbox(src){
 document.getElementById('lightbox').style.display='flex';
 document.getElementById('lightbox-img').src=src;
@@ -291,15 +286,14 @@ function closeLightbox(){
 document.getElementById('lightbox').style.display='none';
 }
 
-/* HERO SLIDESHOW */
-let slides = document.querySelectorAll('.slide');
-let index = 0;
+let slides=document.querySelectorAll('.slide');
+let index=0;
 
 setInterval(()=>{
 slides[index].classList.remove('active');
-index = (index + 1) % slides.length;
+index=(index+1)%slides.length;
 slides[index].classList.add('active');
-}, 4000);
+},4000);
 
 </script>
 

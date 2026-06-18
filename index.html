@@ -8,69 +8,93 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-html {
-scroll-behavior:smooth;
-}
+html { scroll-behavior:smooth; }
 
-body {
+body{
 margin:0;
 background:#0b0b0b;
 color:#fff;
 font-family:Inter, sans-serif;
+overflow-x:hidden;
 }
 
 /* NAV */
-nav {
+nav{
 position:fixed;
 top:0;
 width:100%;
 display:flex;
 justify-content:space-between;
-padding:20px 10%;
-background:rgba(0,0,0,0.4);
-backdrop-filter:blur(10px);
+align-items:center;
+padding:18px 10%;
+background:rgba(0,0,0,0.35);
+backdrop-filter:blur(12px);
 z-index:1000;
 }
 
-nav a {
-color:#fff;
-text-decoration:none;
-margin-left:20px;
-font-size:14px;
-opacity:0.8;
+nav .logo{
+font-weight:600;
+letter-spacing:1px;
 }
 
-nav a:hover {
+nav a{
+color:#fff;
+text-decoration:none;
+margin-left:18px;
+font-size:14px;
+opacity:0.8;
+transition:0.3s;
+}
+
+nav a:hover{
 color:gold;
 opacity:1;
 }
 
-/* HERO */
-.hero {
+/* HERO SLIDESHOW */
+.hero{
 height:100vh;
 display:flex;
-flex-direction:column;
-justify-content:center;
 align-items:center;
+justify-content:center;
 text-align:center;
-background:
-linear-gradient(to bottom, rgba(0,0,0,0.3), #0b0b0b),
-url('https://images.unsplash.com/photo-1529634899167-4be0c0e9d3c0') center/cover no-repeat;
+position:relative;
+overflow:hidden;
 }
 
-.hero h1 {
+.slide{
+position:absolute;
+inset:0;
+background-size:cover;
+background-position:center;
+opacity:0;
+transition:1.2s ease-in-out;
+filter:brightness(0.6);
+}
+
+.slide.active{
+opacity:1;
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+}
+
+.hero h1{
 font-family:'Playfair Display', serif;
-font-size:64px;
-letter-spacing:2px;
+font-size:60px;
 margin:0;
+letter-spacing:2px;
 }
 
-.hero p {
+.hero p{
 opacity:0.7;
 margin-top:10px;
 }
 
-.hero a {
+.hero a{
+display:inline-block;
 margin-top:20px;
 padding:12px 28px;
 border:1px solid gold;
@@ -79,106 +103,109 @@ text-decoration:none;
 transition:0.3s;
 }
 
-.hero a:hover {
+.hero a:hover{
 background:gold;
 color:#000;
 }
 
 /* SECTIONS */
-section {
-padding:100px 10%;
+section{
+padding:90px 10%;
 }
 
-h2 {
+h2{
 font-family:'Playfair Display', serif;
 color:gold;
-font-size:34px;
-margin-bottom:30px;
+font-size:32px;
 text-align:center;
+margin-bottom:40px;
 }
 
 /* ABOUT */
-.about {
-max-width:800px;
+.about{
+max-width:750px;
 margin:auto;
 text-align:center;
-opacity:0.9;
-line-height:1.6;
+opacity:0.85;
+line-height:1.7;
 }
 
 /* SERVICES */
-.services {
+.services{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
 gap:20px;
-text-align:center;
 }
 
-.service {
-border:1px solid rgba(255,255,255,0.1);
-padding:30px;
+.service{
+border:1px solid rgba(255,255,255,0.08);
+padding:28px;
+text-align:center;
 transition:0.3s;
 }
 
-.service:hover {
+.service:hover{
 border-color:gold;
-transform:translateY(-5px);
+transform:translateY(-6px);
 }
 
 /* GALLERY */
-.gallery {
+.gallery{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
 gap:10px;
 }
 
-.gallery img {
+.gallery img{
 width:100%;
 height:320px;
 object-fit:cover;
 cursor:pointer;
-transition:0.3s;
+transition:0.35s;
 filter:grayscale(20%);
+border-radius:2px;
 }
 
-.gallery img:hover {
-transform:scale(1.03);
+.gallery img:hover{
+transform:scale(1.02);
 filter:grayscale(0%);
 }
 
 /* LIGHTBOX */
-.lightbox {
+.lightbox{
 position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
+inset:0;
 background:rgba(0,0,0,0.95);
 display:none;
-justify-content:center;
 align-items:center;
+justify-content:center;
 z-index:2000;
 }
 
-.lightbox img {
+.lightbox img{
 max-width:90%;
 max-height:90%;
 }
 
 /* CONTACT */
-.contact {
+.contact{
 text-align:center;
-line-height:1.8;
-opacity:0.9;
+line-height:1.9;
+opacity:0.85;
 }
 
 /* FOOTER */
-footer {
+footer{
 text-align:center;
 padding:40px;
 opacity:0.5;
 border-top:1px solid rgba(255,255,255,0.1);
-margin-top:50px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+.hero h1{font-size:38px;}
+nav{padding:15px 5%;}
 }
 </style>
 </head>
@@ -186,7 +213,7 @@ margin-top:50px;
 <body>
 
 <nav>
-<div><strong>Dan Lucian</strong></div>
+<div class="logo">Dan Lucian</div>
 <div>
 <a href="#about">About</a>
 <a href="#services">Services</a>
@@ -196,16 +223,25 @@ margin-top:50px;
 </nav>
 
 <header class="hero">
+
+<div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1529634899167-4be0c0e9d3c0')"></div>
+<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1523438097201-512ae7d59c1a')"></div>
+<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee')"></div>
+
+<div class="hero-content">
 <h1>Dan Lucian Photography</h1>
-<p>Luxury Wedding & Event Photography</p>
-<a href="#gallery">View Portfolio</a>
+<p>Luxury Wedding & Event Storytelling</p>
+<a href="#gallery">Explore Portfolio</a>
+</div>
+
 </header>
 
 <section id="about" class="about">
 <h2>About</h2>
 <p>
-I capture real emotion, timeless moments and elegant storytelling.
-Each wedding is treated as a cinematic experience, not just an event.
+I focus on capturing authentic emotion and timeless visual storytelling.
+Every event is documented with a cinematic and elegant approach,
+designed to preserve memories in their most natural form.
 </p>
 </section>
 
@@ -244,6 +280,8 @@ Each wedding is treated as a cinematic experience, not just an event.
 </div>
 
 <script>
+
+/* LIGHTBOX */
 function openLightbox(src){
 document.getElementById('lightbox').style.display='flex';
 document.getElementById('lightbox-img').src=src;
@@ -252,6 +290,17 @@ document.getElementById('lightbox-img').src=src;
 function closeLightbox(){
 document.getElementById('lightbox').style.display='none';
 }
+
+/* HERO SLIDESHOW */
+let slides = document.querySelectorAll('.slide');
+let index = 0;
+
+setInterval(()=>{
+slides[index].classList.remove('active');
+index = (index + 1) % slides.length;
+slides[index].classList.add('active');
+}, 4000);
+
 </script>
 
 </body>

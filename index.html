@@ -74,7 +74,10 @@ filter:brightness(0.6);
 
 .slide.active{ opacity:1; }
 
-.hero-content{ position:relative; z-index:2; }
+.hero-content{
+position:relative;
+z-index:2;
+}
 
 .hero h1{
 font-family:'Playfair Display', serif;
@@ -117,7 +120,7 @@ text-align:center;
 margin-bottom:40px;
 }
 
-/* DESPRE MINE */
+/* ABOUT */
 .about{
 max-width:750px;
 margin:auto;
@@ -126,7 +129,7 @@ opacity:0.85;
 line-height:1.7;
 }
 
-/* SERVICII */
+/* SERVICES */
 .services{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
@@ -145,7 +148,16 @@ border-color:gold;
 transform:translateY(-6px);
 }
 
-/* GALERIE */
+/* PORTOFOLIU */
+.portfolio{
+text-align:center;
+max-width:800px;
+margin:auto;
+opacity:0.85;
+line-height:1.7;
+}
+
+/* GALLERY */
 .gallery{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
@@ -187,6 +199,34 @@ max-height:90%;
 .contact{
 text-align:center;
 line-height:1.9;
+opacity:0.9;
+}
+
+form{
+max-width:500px;
+margin:40px auto 0;
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
+input, textarea{
+padding:12px;
+border:none;
+outline:none;
+font-family:Inter;
+}
+
+button{
+padding:12px;
+background:gold;
+border:none;
+cursor:pointer;
+font-weight:600;
+transition:0.3s;
+}
+
+button:hover{
 opacity:0.85;
 }
 
@@ -208,16 +248,19 @@ nav{padding:15px 5%;}
 
 <body>
 
+<!-- NAV -->
 <nav>
 <div class="logo">Dan Lucian</div>
 <div>
 <a href="#despre">Despre</a>
 <a href="#servicii">Servicii</a>
+<a href="#portofoliu">Portofoliu</a>
 <a href="#galerie">Galerie</a>
 <a href="#contact">Contact</a>
 </div>
 </nav>
 
+<!-- HERO -->
 <header class="hero">
 
 <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1529634899167-4be0c0e9d3c0')"></div>
@@ -226,31 +269,42 @@ nav{padding:15px 5%;}
 
 <div class="hero-content">
 <h1>Dan Lucian Photography</h1>
-<p>Fotografie de nuntă și evenimente cu stil, emoție și eleganță</p>
-<a href="#galerie">Vezi portofoliul</a>
+<p>Fotografie de nuntă și botez cu stil, emoție și eleganță</p>
+<a href="#contact">Rezervă o ședință</a>
 </div>
 
 </header>
 
+<!-- ABOUT -->
 <section id="despre" class="about">
 <h2>Despre mine</h2>
 <p>
 Surprind emoția autentică și momentele care nu se repetă.
-Fiecare eveniment este tratat ca o poveste vizuală,
-capturată într-un stil cinematic și elegant, cu atenție la detalii și lumină.
+Fiecare eveniment este documentat discret, natural și cu atenție la detalii,
+pentru a crea imagini atemporale și pline de viață.
 </p>
 </section>
 
+<!-- SERVICES -->
 <section id="servicii">
 <h2>Servicii</h2>
 <div class="services">
 <div class="service">Fotografie de nuntă</div>
 <div class="service">Botezuri</div>
-<div class="service">Evenimente corporate</div>
 <div class="service">Ședințe foto portret</div>
 </div>
 </section>
 
+<!-- PORTOFOLIU -->
+<section id="portofoliu" class="portfolio">
+<h2>Portofoliu</h2>
+<p>
+Lucrez în principal pe evenimente de familie, concentrându-mă pe emoție, lumină naturală și storytelling vizual.
+Fiecare proiect este tratat cu atenție la detalii și respect pentru moment.
+</p>
+</section>
+
+<!-- GALLERY -->
 <section id="galerie">
 <h2>Galerie</h2>
 <div class="gallery">
@@ -261,16 +315,31 @@ capturată într-un stil cinematic și elegant, cu atenție la detalii și lumin
 </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact" class="contact">
-<h2>Contact</h2>
-<p>Email: contact@danlucianphotography.com</p>
-<p>Instagram: @danlucianphotography</p>
+<h2>Rezervă o ședință</h2>
+
+<p>Completează formularul și te contactez în cel mai scurt timp.</p>
+
+<form action="https://formsubmit.co/contact@danlucianphotography.com" method="POST">
+
+<input type="text" name="nume" placeholder="Numele tău" required>
+<input type="email" name="email" placeholder="Email" required>
+<input type="text" name="tip_eveniment" placeholder="Tip eveniment (nuntă / botez / ședință foto)" required>
+<textarea name="mesaj" rows="5" placeholder="Detalii..." required></textarea>
+
+<button type="submit">Trimite solicitarea</button>
+
+<input type="hidden" name="_captcha" value="false">
+</form>
+
 </section>
 
 <footer>
 © 2026 Dan Lucian Photography. Toate drepturile rezervate.
 </footer>
 
+<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
 <img id="lightbox-img" src="">
 </div>

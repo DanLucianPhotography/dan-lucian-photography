@@ -1,1 +1,522 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="DanLucian Photography — fotograf profesionist de nuntă, botez, cununie și ședințe foto portret în București. Imagini naturale, emoții reale, amintiri care durează o viață.">
+<title>DanLucian Photography | Fotograf Nuntă, Botez & Portret București</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Pinyon+Script&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--bg:#0c0a08;
+--bg-soft:#141210;
+--ink:#f3ecdf;
+--ink-dim:rgba(243,236,223,0.68);
+--gold:#c9a876;
+--gold-light:#e3c98f;
+--gold-deep:#8a6d3b;
+--hairline:rgba(201,168,118,0.22);
+}
+
+html{ scroll-behavior:smooth; }
+
+body{
+margin:0;
+background:var(--bg);
+color:var(--ink);
+font-family:'Jost', sans-serif;
+font-weight:300;
+overflow-x:hidden;
+letter-spacing:0.3px;
+}
+
+/* NAV */
+nav{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:22px 8%;
+background:rgba(12,10,8,0.55);
+backdrop-filter:blur(14px);
+border-bottom:1px solid var(--hairline);
+z-index:1000;
+}
+
+/* BRAND TITLE — gravaj auriu */
+.brand-title{
+display:flex;
+align-items:baseline;
+gap:10px;
+flex-wrap:wrap;
+line-height:1;
+}
+
+.brand-name{
+font-family:'Italiana', serif;
+font-weight:400;
+letter-spacing:3px;
+text-transform:uppercase;
+background:linear-gradient(180deg,#f6e8c8 0%, #c9a876 45%, #8a6d3b 100%);
+-webkit-background-clip:text;
+background-clip:text;
+color:transparent;
+filter:drop-shadow(0 1px 0 rgba(0,0,0,0.5)) drop-shadow(0 6px 10px rgba(0,0,0,0.45));
+}
+
+.brand-tag{
+font-family:'Pinyon Script', cursive;
+font-weight:400;
+color:var(--gold);
+text-shadow:0 2px 8px rgba(0,0,0,0.5);
+}
+
+nav .logo .brand-name{ font-size:20px; }
+nav .logo .brand-tag{ font-size:26px; }
+
+.hero-brand .brand-name{ font-size:54px; }
+.hero-brand .brand-tag{ font-size:42px; }
+
+@media(max-width:768px){
+.hero-brand .brand-name{ font-size:34px; }
+.hero-brand .brand-tag{ font-size:28px; }
+}
+
+nav a{
+color:var(--ink-dim);
+text-decoration:none;
+margin-left:26px;
+font-size:12px;
+letter-spacing:2px;
+text-transform:uppercase;
+transition:0.4s;
+position:relative;
+}
+
+nav a::after{
+content:'';
+position:absolute;
+left:0; bottom:-6px;
+width:0%;
+height:1px;
+background:var(--gold);
+transition:0.4s;
+}
+
+nav a:hover{ color:var(--gold-light); }
+nav a:hover::after{ width:100%; }
+
+/* HERO */
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+position:relative;
+overflow:hidden;
+}
+
+.slide{
+position:absolute;
+inset:0;
+background-size:cover;
+background-position:center;
+opacity:0;
+transition:1.8s ease-in-out;
+filter:brightness(0.42) saturate(0.9);
+}
+
+.slide.active{ opacity:1; }
+
+.hero::after{
+content:'';
+position:absolute;
+inset:0;
+background:radial-gradient(ellipse at center, rgba(12,10,8,0) 30%, rgba(12,10,8,0.88) 100%);
+z-index:1;
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+padding:0 20px;
+}
+
+.hero h1{
+font-family:'Cormorant Garamond', serif;
+font-style:italic;
+font-weight:400;
+font-size:24px;
+margin:22px 0 0;
+letter-spacing:3px;
+color:var(--ink-dim);
+}
+
+.hero p{
+font-family:'Jost', sans-serif;
+font-weight:300;
+opacity:0.7;
+margin-top:14px;
+font-size:14px;
+letter-spacing:1px;
+}
+
+.hero a{
+display:inline-block;
+margin-top:32px;
+padding:14px 36px;
+border:1px solid var(--gold);
+color:var(--gold-light);
+text-decoration:none;
+font-size:12px;
+letter-spacing:3px;
+text-transform:uppercase;
+transition:0.5s;
+}
+
+.hero a:hover{
+background:var(--gold);
+color:#0c0a08;
+letter-spacing:4px;
+}
+
+/* SECTIONS */
+section{ padding:110px 9%; }
+
+h2{
+font-family:'Cormorant Garamond', serif;
+font-weight:500;
+letter-spacing:5px;
+text-transform:uppercase;
+color:var(--ink);
+font-size:26px;
+text-align:center;
+margin-bottom:0;
+}
+
+h2::after{
+content:'';
+display:block;
+width:50px;
+height:1px;
+background:var(--gold);
+margin:22px auto 50px;
+}
+
+/* ABOUT */
+.about{
+max-width:680px;
+margin:auto;
+text-align:center;
+font-family:'Cormorant Garamond', serif;
+font-style:italic;
+font-size:19px;
+line-height:1.9;
+color:var(--ink-dim);
+}
+
+/* SERVICES */
+.services{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:1px;
+background:var(--hairline);
+border:1px solid var(--hairline);
+}
+
+.service{
+background:var(--bg);
+padding:46px 24px;
+text-align:center;
+font-family:'Jost', sans-serif;
+font-size:13px;
+letter-spacing:2px;
+text-transform:uppercase;
+color:var(--ink-dim);
+transition:0.5s;
+}
+
+.service::before{
+content:'—';
+display:block;
+color:var(--gold);
+margin-bottom:16px;
+font-family:'Cormorant Garamond', serif;
+font-size:18px;
+}
+
+.service:hover{
+background:var(--bg-soft);
+color:var(--gold-light);
+}
+
+/* PORTOFOLIU */
+.portfolio{
+text-align:center;
+max-width:760px;
+margin:auto;
+font-family:'Cormorant Garamond', serif;
+font-style:italic;
+font-size:19px;
+line-height:1.9;
+color:var(--ink-dim);
+}
+
+/* GALLERY */
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:2px;
+}
+
+.gallery img{
+width:100%;
+height:360px;
+object-fit:cover;
+cursor:pointer;
+transition:0.7s ease;
+filter:grayscale(35%) brightness(0.85);
+}
+
+.gallery img:hover{
+filter:grayscale(0%) brightness(1);
+transform:scale(1.015);
+}
+
+/* LIGHTBOX */
+.lightbox{
+position:fixed;
+inset:0;
+background:rgba(8,7,6,0.96);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:2000;
+}
+
+.lightbox img{
+max-width:88%;
+max-height:88%;
+border:1px solid var(--hairline);
+}
+
+/* CONTACT */
+.contact{
+text-align:center;
+line-height:1.9;
+font-family:'Jost', sans-serif;
+font-weight:300;
+color:var(--ink-dim);
+}
+
+.contact p{ font-size:14px; letter-spacing:0.5px; }
+
+form{
+max-width:480px;
+margin:50px auto 0;
+display:flex;
+flex-direction:column;
+gap:16px;
+}
+
+input, textarea{
+padding:14px 16px;
+border:1px solid var(--hairline);
+background:transparent;
+color:var(--ink);
+outline:none;
+font-family:'Jost', sans-serif;
+font-size:13px;
+letter-spacing:0.5px;
+transition:0.4s;
+}
+
+input::placeholder, textarea::placeholder{ color:rgba(243,236,223,0.4); }
+input:focus, textarea:focus{ border-color:var(--gold); }
+
+button{
+padding:14px;
+background:transparent;
+border:1px solid var(--gold);
+color:var(--gold-light);
+cursor:pointer;
+font-family:'Jost', sans-serif;
+font-size:12px;
+letter-spacing:3px;
+text-transform:uppercase;
+transition:0.5s;
+}
+
+button:hover{ background:var(--gold); color:#0c0a08; }
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:50px;
+font-family:'Jost', sans-serif;
+font-size:11px;
+letter-spacing:1px;
+color:rgba(243,236,223,0.4);
+border-top:1px solid var(--hairline);
+}
+
+/* MOBILE */
+@media(max-width:768px){
+nav{ padding:16px 6%; }
+nav a{ margin-left:14px; font-size:10px; }
+section{ padding:70px 6%; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+<div class="logo brand-title">
+<span class="brand-name">DanLucian</span><span class="brand-tag">Photography</span>
+</div>
+<div>
+<a href="#despre">Despre</a>
+<a href="#servicii">Servicii</a>
+<a href="#portofoliu">Portofoliu</a>
+<a href="#galerie">Galerie</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+
+<div class="slide active" style="background-image:url('images/hero1.jpg')"></div>
+<div class="slide" style="background-image:url('images/hero2.jpg')"></div>
+<div class="slide" style="background-image:url('images/hero3.jpg')"></div>
+
+<div class="hero-content">
+<div class="brand-title hero-brand">
+<span class="brand-name">DanLucian</span><span class="brand-tag">Photography</span>
+</div>
+<h1>Fotograf Nuntă & Botez București</h1>
+<p>Imagini naturale, emoții reale, amintiri care durează o viață</p>
+<a href="#contact">Verifică disponibilitatea</a>
+</div>
+
+</header>
+
+<!-- ABOUT -->
+<section id="despre" class="about">
+<h2>Despre mine</h2>
+<p>
+Surprind emoția autentică și momentele care nu se repetă.
+Fiecare eveniment este documentat discret, natural și cu atenție la detalii,
+pentru a crea imagini atemporale și pline de viață.
+</p>
+</section>
+
+<!-- WHY ME -->
+<section>
+<h2>De ce să mă alegi</h2>
+
+<div class="services">
+<div class="service">Stil natural, fără poze forțate</div>
+<div class="service">Experiență în evenimente de familie</div>
+<div class="service">Livrare rapidă a fotografiilor</div>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section id="servicii">
+<h2>Servicii</h2>
+<div class="services">
+<div class="service">Fotografie de Nuntă</div>
+<div class="service">Botezuri</div>
+<div class="service">Cununii Civile & Religioase</div>
+<div class="service">Ședințe Foto Portret</div>
+<div class="service">Evenimente Speciale</div>
+</div>
+</section>
+
+<!-- PORTOFOLIU -->
+<section id="portofoliu" class="portfolio">
+<h2>Portofoliu</h2>
+<p>
+Fotografie de eveniment axată pe emoție, lumină naturală și storytelling vizual.
+Fiecare moment este surprins exact așa cum se întâmplă.
+</p>
+</section>
+
+<!-- GALLERY -->
+<section id="galerie">
+<h2>Galerie</h2>
+<div class="gallery">
+<img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" onclick="openLightbox(this.src)">
+<img src="https://images.unsplash.com/photo-1523438097201-512ae7d59c1a" onclick="openLightbox(this.src)">
+<img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3" onclick="openLightbox(this.src)">
+<img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc" onclick="openLightbox(this.src)">
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+<h2>Rezervă o ședință</h2>
+
+<p>Completează formularul și te contactez în cel mai scurt timp.</p>
+
+<form action="https://formsubmit.co/dan_c_lucian@yahoo.com" method="POST">
+
+<input type="text" name="nume" placeholder="Numele tău" required>
+<input type="email" name="email" placeholder="Email" required>
+<input type="text" name="tip_eveniment" placeholder="Tip eveniment (nuntă / botez / cununie / ședință foto)" required>
+<textarea name="mesaj" rows="5" placeholder="Detalii..." required></textarea>
+
+<button type="submit">Trimite solicitarea</button>
+
+<input type="hidden" name="_captcha" value="false">
+</form>
+
+<p style="margin-top:24px;">
+WhatsApp rapid: <a href="https://wa.me/40766212399" style="color:#e3c98f;">Scrie-mi acum</a>
+<br>
+Email: <a href="mailto:dan_c_lucian@yahoo.com" style="color:#e3c98f;">dan_c_lucian@yahoo.com</a>
+</p>
+
+</section>
+
+<footer>
+© 2026 DanLucian Photography. Toate drepturile rezervate. · dan_c_lucian@yahoo.com
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+<img id="lightbox-img" src="">
+</div>
+
+<script>
+
+function openLightbox(src){
+document.getElementById('lightbox').style.display='flex';
+document.getElementById('lightbox-img').src=src;
+}
+
+function closeLightbox(){
+document.getElementById('lightbox').style.display='none';
+}
+
+let slides=document.querySelectorAll('.slide');
+let index=0;
+
+setInterval(()=>{
+slides[index].classList.remove('active');
+index=(index+1)%slides.length;
+slides[index].classList.add('active');
+},4000);
+
+</script>
+
+</body>
+</html>

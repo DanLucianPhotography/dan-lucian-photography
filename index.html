@@ -124,11 +124,12 @@ overflow:hidden;
 .slide{
 position:absolute;
 inset:0;
-background-size:cover;
-background-position:center;
+background-size:contain;
+background-repeat:no-repeat;
+background-position:center center;
 opacity:0;
 transition:1.8s ease-in-out;
-filter:brightness(0.42) saturate(0.9);
+filter:brightness(0.85) saturate(0.9);
 }
 
 .slide.active{ opacity:1; }
